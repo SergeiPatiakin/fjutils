@@ -1,0 +1,20 @@
+# History settings
+	# Avoid duplicates
+	export HISTCONTROL=ignoredups:erasedups  
+	# When the shell exits, append to the history file instead of overwriting it
+	shopt -s histappend
+
+	# After each command, append to the history file and reread it
+	export PROMPT_COMMAND="history -a; history -c; history -r"
+
+# Fjutils settings
+	# fjutils config
+	export MACHINE_NICKNAME=Mac
+
+	# fjutils code
+	export PS1="\[\033[0;30;33m\]$MACHINE_NICKNAME\$(fjproj_current):\[\033[32m\]\w\[\e[0m\]\\\$ "
+	export FJCONF_SYSBASHPROFILE=~/.bash_profile
+	export FJUTILS_SCRIPTS=~/fjutils/src
+	. "$FJUTILS_SCRIPTS/fj/fjutils_bashrc.sh"
+	PATH="$FJUTILS_SCRIPTS:${PATH}"
+	export PATH

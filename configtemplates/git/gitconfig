@@ -1,0 +1,10 @@
+[user]
+	email = sergei.patiakin@gmail.com
+	name = Sergei Patiakin
+[alias]
+	co = checkout
+	st = status
+[credential]
+	helper = store
+[core]
+	editor = vim

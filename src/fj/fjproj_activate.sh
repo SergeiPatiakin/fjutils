@@ -1,0 +1,4 @@
+. "$FJCONF_SYSBASHPROFILE"
+if [ -n "$FJPROJ_ACTIVATE" ]; then
+    . "$FJPROJ_ACTIVATE"
+fi
