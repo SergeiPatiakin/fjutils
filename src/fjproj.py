@@ -3,9 +3,9 @@
 import sys
 import os
 import argparse
+from fj.bash import call_bash
 from fj.fjproj import load_projects, save_projects, edit_projects, list_projects
 from fj.projpath import projpath
-from subprocess import call
 
 parser = argparse.ArgumentParser("Manage projects and shell environments")
 group = parser.add_mutually_exclusive_group()
@@ -31,7 +31,7 @@ def activate_project(project_name):
     if project.get('activate') is not None:
         activate_path = os.path.expanduser(project['activate'])
         os.environ['FJPROJ_ACTIVATE'] = activate_path
-    call(['bash', '--init-file', projpath('src', 'fj', 'fjproj_activate.sh')])
+    call_bash(['--init-file', projpath('src', 'fj', 'fjproj_activate.sh')])
 
 def create_project_obj(dir):
     return {'dir': dir}

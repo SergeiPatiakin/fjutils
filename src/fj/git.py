@@ -2,21 +2,18 @@
 import subprocess
 import os
 import re
-
+from subprocess import call
 
 def get_repo_dir():
     return subprocess.Popen(['git', 'rev-parse', '--show-toplevel'],
-                            stdout=subprocess.PIPE).communicate()[
-        0].rstrip().decode('utf-8')
+                            stdout=subprocess.PIPE).communicate()[0].rstrip().decode('utf-8')
 
 
 def create_symref(alias_ref, target_ref):
-    subprocess.call(['git', 'symbolic-ref', 'refs/heads/{0}'.format(alias_ref),
-                     'refs/heads/{0}'.format(target_ref)])
+    call_git(['symbolic-ref', 'refs/heads/{0}'.format(alias_ref), 'refs/heads/{0}'.format(target_ref)])
 
 def delete_symref(alias_ref):
-    subprocess.call(['git', 'symbolic-ref', '-d',
-                     'refs/heads/{0}'.format(alias_ref)])
+    call_git(['symbolic-ref', '-d', 'refs/heads/{0}'.format(alias_ref)])
 
 def list_symrefs():
     heads_dir = os.path.join(get_repo_dir(), '.git', 'refs', 'heads')
@@ -40,3 +37,6 @@ def get_current_branch():
     else:
         cur_branch = match.group(1)
         return cur_branch
+
+def call_git(argv):
+    return call(["git"] + argv)
