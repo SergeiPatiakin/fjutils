@@ -7,8 +7,13 @@ Manage projects
 ## fjconf
 Manage app configurations
 
+# Git-related commands
+
 ## gitshort
-Manage git symrefs within a repository
+Create/delete/update git symrefs
+
+## gitrep
+See which branches are behind/ahead
 
 # Utility commands
 ### fjupdate
