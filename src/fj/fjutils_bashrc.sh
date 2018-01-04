@@ -5,3 +5,7 @@ fjproj_current()
 		echo -n "($FJPROJ_CURRENT)"
 	fi
 }
+cdp()
+{
+    source <(ssc_cdp.py "$@")
+}
