@@ -3,8 +3,7 @@
 import sys
 import os
 import argparse
-from fj.fjdb import load, save, get_file
-from fj.editor import DefaultEditor
+from fj.fjproj import load_projects, save_projects, edit_projects, list_projects
 from fj.projpath import projpath
 from subprocess import call
 
@@ -17,18 +16,6 @@ group.add_argument('-n', '--new', action='store_true')
 parser.add_argument('proj_name', nargs='?')
 parser.add_argument('root_dir', nargs='?')
 
-def load_projects():
-    return load("projects", default_type='dict')
-
-def save_projects(projects):
-    save("projects", projects)
-
-def edit_projects():
-    DefaultEditor.simple_open(get_file("projects"))
-
-def list_projects(projects):
-    for project_name in projects:
-        print(project_name)
 
 def activate_project(project_name):
     projects = load_projects()

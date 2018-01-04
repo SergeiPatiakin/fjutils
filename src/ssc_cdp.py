@@ -3,7 +3,7 @@
 import sys
 import os
 import argparse
-from fjproj import load_projects
+from fj.fjproj import load_projects
 from fj.bash import bash_quote
 
 parser = argparse.ArgumentParser("Navigate to bookmarks within a project")
