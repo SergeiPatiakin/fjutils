@@ -4,7 +4,8 @@ env/
 *.pyc
 __pycache__/
 
-# Exclude everything but .py files from the src/ directory (but not subdirectories).
+# Exclude everything but .py and .sh files from the src/ directory (but not subdirectories).
 src/*
 !src/*.py
+!src/*.sh
 !src/*/
