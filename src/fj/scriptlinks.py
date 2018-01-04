@@ -15,5 +15,5 @@ def rebuild_script_links():
         for dir_entry in os.listdir(SCRIPT_ROOT):
             full_path = join(SCRIPT_ROOT, dir_entry)
             if isfile(full_path) and dir_entry != "__init__.py":
-                if full_path.endswith('.py'):
+                if full_path.endswith('.py') or full_path.endswith('.sh'):
                     os.symlink(full_path, full_path[:-3])
