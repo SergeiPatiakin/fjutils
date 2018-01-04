@@ -33,7 +33,12 @@ def list_projects(projects):
 def activate_project(project_name):
     projects = load_projects()
     project = projects[project_name]
-    workdir = os.path.expanduser(project['dir'])
+    proj_dir = os.path.expanduser(project['dir'])
+    if project.get('default_bookmark'):
+        workdir_relative_path = project['bookmarks'][project.get('default_bookmark')]
+        workdir = os.path.join(proj_dir, workdir_relative_path)
+    else:
+        workdir = proj_dir
     os.chdir(workdir)
     os.environ['FJPROJ_CURRENT'] = project_name
     if project.get('activate') is not None:
