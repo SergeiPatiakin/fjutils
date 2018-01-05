@@ -2,17 +2,8 @@
 """Fjconf: manage app configurations"""
 import sys
 import argparse
-from config.git import GitConfig
-from config.subl3 import Subl3Config
-from config.bash import BashConfig
-from fj.nameresolver import NameResolver
+from config.configregistry import config_classes
 from fj.editor import DefaultEditor
-
-config_classes = NameResolver({
-    GitConfig: ['git'],
-    Subl3Config: ['subl', 'subl3'],
-    BashConfig: ['bash'],
-})
 
 parser = argparse.ArgumentParser(description='Manage app configurations')
 parser.add_argument('-e', '--edit', action='store_true')
@@ -22,7 +13,7 @@ parser.add_argument('theirs_num', nargs='?', type=int)
 
 def list_apps():
     print("Supported apps:")
-    for name, _ in config_classes.items():
+    for name in sorted(k for k,v in config_classes.items()):
         print('    '+name)
 
 def list_app_configs(app):

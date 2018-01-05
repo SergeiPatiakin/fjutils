@@ -8,12 +8,15 @@ class NameResolver:
         self.forwards_dict = {}
         self.reverse_dict = {}
         for value, keys_list in backwards_dict.items():
-            self.reverse_dict[value] = keys_list[0]
-            for key in keys_list:
-                self.forwards_dict[key] = value
+            self.setnames(value, keys_list)
 
     def __getitem__(self, item):
         return self.forwards_dict[item]
+
+    def setnames(self, value, keys_list):
+        self.reverse_dict[value] = keys_list[0]
+        for key in keys_list:
+            self.forwards_dict[key] = value
 
     def values(self):
         return self.reverse_dict.keys()
