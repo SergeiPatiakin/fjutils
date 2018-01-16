@@ -1,0 +1,4 @@
+# Scrolling with pageup/pagedown
+bind -n Pageup copy-mode -u
+bind -n S-Pageup copy-mode -u
+bind -n S-Pagedown send-keys Pagedown
