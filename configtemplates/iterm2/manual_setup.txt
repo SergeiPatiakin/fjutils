@@ -1,0 +1,6 @@
+Cmd + LeftArrow = Send 0x01
+Cmd + RightArrow = Send 0x05
+Alt + LeftArrow = SendEscSeq b
+Alt + RightArrow = SendEscSeq f
+Alt + Backspace = Send 0x17
+Alt + Delete = SendEscSeq d
