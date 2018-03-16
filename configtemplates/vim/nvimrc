@@ -1,0 +1,83 @@
+" Plugins
+call plug#begin()
+    " Sensible defaults
+    Plug 'tpope/vim-sensible'
+
+    " NERD tree will be loaded on the first invocation of NERDTreeToggle command
+    Plug 'scrooloose/nerdtree'
+
+    " Multi-language autocomplete
+    Plug 'Valloric/YouCompleteMe'
+
+    " Global fuzzy file search
+    Plug 'kien/ctrlp.vim'
+
+    " Linter/compiler integration
+    Plug 'neomake/neomake'
+
+    " Solarized color scheme"
+    Plug 'lifepillar/vim-solarized8'
+
+call plug#end()
+
+" Neomake
+    let g:neomake_python_venvpylint_maker = {
+    \ 'exe': 'pylint',
+    \ 'args': [
+        \ '-f', 'text',
+        \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
+        \ '-r', 'n'
+    \ ],
+    \ 'errorformat':
+        \ '%A%f:%l:%c:%t: %m,' .
+        \ '%A%f:%l: %m,' .
+        \ '%A%f:(%l): %m,' .
+        \ '%-Z%p^%.%#,' .
+        \ '%-G%.%#',
+    \ }
+    let g:neomake_python_enabled_makers = ['venvpylint']
+
+    " Neomake when writing a buffer, and on normal mode changes (after 750ms).
+    call neomake#configure#automake('nw', 750)
+
+" NerdTree
+    " Open tree
+    :nnoremap <C-L> :NERDTreeToggle<CR>
+
+    " Locate in tree
+    :nnoremap <C-K> :NERDTreeFind<CR>
+
+" YouCompleteMe
+    " F12 for 'go to declaration'
+    :nnoremap <F12> :YcmCompleter GoToDeclaration<CR>
+
+" Allow per-project .nvimrc files
+set exrc
+set secure
+
+" Styling
+set background=dark
+colorscheme solarized8
+
+" Miscellaneous
+    " show line numbers
+    set number
+
+    " set tabs to have 4 spaces
+    set ts=4
+
+    " indent when moving to the next line while writing code
+    set autoindent
+
+    " expand tabs into spaces
+    set expandtab
+
+    " when using the >> or << commands, shift lines by 4 spaces
+    set shiftwidth=4
+
+    " show the matching part of the pair for [] {} and ()
+    set showmatch
+
+    " enable all Python syntax highlighting features
+    let python_highlight_all = 1
+
