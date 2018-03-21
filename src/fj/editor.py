@@ -51,6 +51,8 @@ EDITOR_REGISTRY = {
 }
 
 fjutils_conf=load("fjutils", default_type='dict')
+
+# Use nvim if nothing is defined in conf
 default_editor_name = fjutils_conf.get('editor', 'nvim')
 
 DefaultEditor = EDITOR_REGISTRY[default_editor_name]
