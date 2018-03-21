@@ -1,5 +1,6 @@
 """Utilites for opening editors"""
 import subprocess
+from fj.fjdb import load
 
 class SublimeEditor:
     two_column_command = 'set_layout {"cols": [0, 0.5, 1], "rows": [0, 1], "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]}'
@@ -30,4 +31,26 @@ class IdeaEditor:
     def compare(cls, path1, path2):
         cls._call('diff', path1, path2)
 
-DefaultEditor = SublimeEditor
+class NvimEditor:
+    @classmethod
+    def _call(cls, *args):
+        subprocess.call(['nvim'] + list(args))
+
+    @classmethod
+    def simple_open(cls, *paths):
+        cls._call(*paths)
+
+    @classmethod
+    def compare(cls, path1, path2):
+        return cls.simple_open('-O', path1, path2)
+
+EDITOR_REGISTRY = {
+    'sublime': SublimeEditor,
+    'idea': IdeaEditor,
+    'nvim': NvimEditor,
+}
+
+fjutils_conf=load("fjutils", default_type='dict')
+default_editor_name = fjutils_conf.get('editor', 'nvim')
+
+DefaultEditor = EDITOR_REGISTRY[default_editor_name]
