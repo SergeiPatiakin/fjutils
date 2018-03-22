@@ -31,6 +31,9 @@ def activate_project(project_name):
     if project.get('activate') is not None:
         activate_path = os.path.expanduser(project['activate'])
         os.environ['FJPROJ_ACTIVATE'] = activate_path
+    if project.get('paths') is not None:
+        current_path = os.environ['PATH']
+        os.environ['PATH'] = ':'.join([current_path] + project.get('paths'))
     call_bash(['--init-file', projpath('src', 'fj', 'fjproj_activate.sh')])
 
 def create_project_obj(dir):
