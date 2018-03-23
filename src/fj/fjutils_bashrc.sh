@@ -7,5 +7,5 @@ fjproj_current()
 }
 cdp()
 {
-    eval "$(ssc_cdp.py $@)"
+    eval "$(ssc_cdp $@)"
 }

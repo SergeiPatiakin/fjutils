@@ -23,5 +23,5 @@ def chdir_install_root():
 
 
 USER_HOME = os.path.expanduser("~")
-SCRIPT_ROOT = os.path.dirname(os.path.dirname(__file__))
-INSTALL_ROOT = os.path.dirname(SCRIPT_ROOT)
+INSTALL_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+SCRIPT_BIN_DIR = os.path.join(INSTALL_ROOT, 'bin')
