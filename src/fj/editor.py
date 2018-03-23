@@ -2,6 +2,7 @@
 import subprocess
 from fj.fjdb import load
 
+
 class SublimeEditor:
     two_column_command = 'set_layout {"cols": [0, 0.5, 1], "rows": [0, 1], "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]}'
 
@@ -17,6 +18,7 @@ class SublimeEditor:
     def compare(cls, path1, path2):
         cls._call('-n', '--command', cls.two_column_command, path1, path2)
 
+
 class IdeaEditor:
     @classmethod
     def _call(cls, *args):
@@ -31,6 +33,7 @@ class IdeaEditor:
     def compare(cls, path1, path2):
         cls._call('diff', path1, path2)
 
+
 class NvimEditor:
     @classmethod
     def _call(cls, *args):
@@ -44,13 +47,14 @@ class NvimEditor:
     def compare(cls, path1, path2):
         return cls.simple_open('-O', path1, path2)
 
+
 EDITOR_REGISTRY = {
     'sublime': SublimeEditor,
     'idea': IdeaEditor,
     'nvim': NvimEditor,
 }
 
-fjutils_conf=load("fjutils", default_type='dict')
+fjutils_conf = load("fjutils", default_type='dict')
 
 # Use nvim if nothing is defined in conf
 default_editor_name = fjutils_conf.get('editor', 'nvim')

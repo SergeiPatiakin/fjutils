@@ -2,6 +2,7 @@
 from config.baseconfig import BaseConfig
 from fj.projpath import appconfigpath, homepath
 
+
 class GitConfig(BaseConfig):
     @staticmethod
     def get_config_files():

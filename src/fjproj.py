@@ -22,7 +22,8 @@ def activate_project(project_name):
     project = projects[project_name]
     proj_dir = os.path.expanduser(project['dir'])
     if project.get('default_bookmark'):
-        workdir_relative_path = project['bookmarks'][project.get('default_bookmark')]
+        workdir_relative_path = project['bookmarks'][project.get(
+            'default_bookmark')]
         workdir = os.path.join(proj_dir, workdir_relative_path)
     else:
         workdir = proj_dir
@@ -36,8 +37,10 @@ def activate_project(project_name):
         os.environ['PATH'] = ':'.join([current_path] + project.get('paths'))
     call_bash(['--init-file', projpath('src', 'fj', 'fjproj_activate.sh')])
 
+
 def create_project_obj(dir):
     return {'dir': dir}
+
 
 def handle_main(argv):
     projects = load_projects()
@@ -69,6 +72,7 @@ def handle_main(argv):
     else:
         # No arguments
         list_projects(projects)
+
 
 if __name__ == "__main__":
     handle_main(sys.argv)

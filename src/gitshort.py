@@ -5,11 +5,13 @@ import argparse
 from fj.git import get_current_branch, create_symref, delete_symref, \
     list_symrefs
 
-parser = argparse.ArgumentParser(description='Create, list and delete aliases for git branches.')
+parser = argparse.ArgumentParser(
+    description='Create, list and delete aliases for git branches.')
 group = parser.add_mutually_exclusive_group()
 group.add_argument('-d', '--delete', action='store_true')
 group.add_argument('-l', '--list', action='store_true')
 parser.add_argument('ref_name', nargs='?')
+
 
 def gitshort(argv):
     args = parser.parse_args(argv[1:])
@@ -28,6 +30,7 @@ def gitshort(argv):
     else:
         # No arguments
         list_symrefs()
+
 
 if __name__ == "__main__":
     gitshort(sys.argv)

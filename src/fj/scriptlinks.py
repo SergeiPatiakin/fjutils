@@ -3,6 +3,7 @@ from os.path import isfile, islink, join
 from fj.projpath import SCRIPT_ROOT
 from fj.environment import platform
 
+
 def rebuild_script_links():
     """Build symlinks to allow script invocation without the '.py' extension"""
     # Remove links

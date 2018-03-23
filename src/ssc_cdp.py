@@ -9,6 +9,7 @@ from fj.bash import bash_quote
 parser = argparse.ArgumentParser("Navigate to bookmarks within a project")
 parser.add_argument('bookmark', nargs='?')
 
+
 def main(argv):
     args = parser.parse_args(argv)
     project_name = os.environ.get('FJPROJ_CURRENT')
@@ -21,6 +22,7 @@ def main(argv):
     else:
         workdir = proj_dir
     print("cd '{0}'".format(bash_quote(workdir)))
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])

@@ -1,4 +1,6 @@
 """Base class for configuration finders"""
+
+
 class BaseConfig:
     @staticmethod
     def get_config_files():

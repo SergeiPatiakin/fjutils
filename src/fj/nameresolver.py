@@ -1,5 +1,6 @@
 class NameResolver:
     """Dictionary where each value has multiple keys, one of which is marked preferred"""
+
     def __init__(self, backwards_dict):
         """
         Args:
