@@ -6,3 +6,4 @@ __pycache__/
 
 # Exclude everything but .py and .sh files from the src/ directory (but not subdirectories).
 bin/*
+!bin/.gitkeep
