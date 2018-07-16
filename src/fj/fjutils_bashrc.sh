@@ -9,3 +9,7 @@ cdp()
 {
     eval "$(ssc_cdp $@)"
 }
+fjp()
+{
+    eval "$(ssc_fjp $@)"
+}
