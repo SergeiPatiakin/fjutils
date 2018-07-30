@@ -14,6 +14,9 @@ def edit_projects():
     DefaultEditor.simple_open(get_file("projects"))
 
 
-def list_projects(projects):
+def list_projects(projects, stream=None):
     for project_name in projects:
-        print(project_name)
+        if stream is None:
+            print(project_name)
+        else:
+            stream.write(project_name + '\n')
