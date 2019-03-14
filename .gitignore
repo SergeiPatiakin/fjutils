@@ -1,5 +1,6 @@
 fjdb/*.json
 .idea/
+.vscode/
 env/
 *.pyc
 __pycache__/
