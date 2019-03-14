@@ -17,6 +17,7 @@ group.add_argument('-l', '--list', action='store_true')
 group.add_argument('-d', '--delete', action='store_true')
 group.add_argument('-e', '--edit', action='store_true')
 group.add_argument('-n', '--new', action='store_true')
+group.add_argument('-r', '--reactivate', action='store_true')
 parser.add_argument('proj_name', nargs='?')
 parser.add_argument('root_dir', nargs='?')
 
@@ -78,6 +79,12 @@ def handle_main(argv):
         save_projects(projects)
     elif args.edit:
         edit_projects()
+    elif args.reactivate:
+        current_project_name = os.environ.get('FJPROJ_CURRENT')
+        if current_project_name is not None:
+            activate_project(current_project_name)
+        else:
+            raise Exception('No project is active')
     elif args.proj_name:
         try:
             activate_project(args.proj_name)
